@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<body style="margin : 0px; overflow: hidden;">
+<a-scene embedded arjs="sourceType: webcam;" >
+<a-marker  type='pattern' url='pattern-marker.patt'>
+
+<a-text id="daily_output" color="red" align="center" width="1" position="0 0 -1" rotation="-90 -180 -180"
+font="aileronsemibold"
+wrap-count="15"
+value="Daily Output:10000" ></a-text>
+
+<a-text id="monthly_output" color="yellow" align="center" width="1" position="0 0 0" rotation="-90 -180 -180"
+font="aileronsemibold"
+wrap-count="15"
+value="Total Output:10000" ></a-text>
+
+<a-text id="weekly_output" color="blue" align="center" width="1" position="0 0 0.5" rotation="-90 -180 -180"
+font="aileronsemibold"
+wrap-count="15"
+value="Total Output:10000" ></a-text>
+</a-marker>
+<a-entity camera></a-entity>
+</a-scene>
+
+<script>
+function counter() {
+var i = 0;
+setInterval(function() {
+if (i == 100) {
+
+}
+else{
+console.log('Currently at ' + (i++))
+};
+document.getElementById('daily_output').setAttribute('value', `Total:${i++}`);
+document.getElementById('monthly_output').setAttribute('value', `Total:${i++}`);
+document.getElementById('weekly_output').setAttribute('value', `Target Reached:Yes`);
+}, 1000);
+} // End
+
+counter()
+
+</script>
+</body>
+</html>
